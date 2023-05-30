@@ -31,7 +31,7 @@
     <div class="flex justify-center w-full py-10">    
         <!-- <h1>dsadasdas</h1> -->
         <div class="max-w-4xl">
-            <CarouselTransition {images} transitionType="slide" transitionParams="{{duration: 1500, easing: bounceInOut}}" showCaptions={false} showThumbs={false}/>
+            <CarouselTransition {images} transitionType="slide" transitionParams="{{duration: 500, easing: bounceInOut}}" showCaptions={false} showThumbs={false}/>
         </div>
     </div>
 </div>

@@ -32,7 +32,7 @@
 </script>
 
 
-<main class="w-full h-full bg-black text-white">
+<main class="w-full h-full bg-black text-black">
     <header class="flex justify-between bg-black/50 w-full h-20 p-2 sticky top-0 text-lg md:px-0 text-white z-10">
         <a href="/" class="ml-10 mr-6"><img class="h-full invert" src={img} alt=""></a>
 
@@ -59,7 +59,7 @@
 
         <ul class="flex h-full items-center gap-2 font-bold font-sans text-lg">
             {#each menus as menu}
-                <li class="">
+                <li class="hover:text-gray-500">
                     <a class="px-7" href={menu.href}>{menu.title}</a>
                 </li>
             {/each}
