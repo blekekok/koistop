@@ -1,10 +1,8 @@
-<script>
+<script lang="ts">
   import { Button, Search } from 'flowbite-svelte';
   import img from '$lib/images/logoikangud.svg';
-  import type { PageData } from './$types';
 
-  export let data: PageData;
-  $: ({ user, tableData } = data);
+  export let user: any = null;
 
   const menus = [
         {
@@ -22,10 +20,6 @@
         {
             title: 'SELL',
             href: '/sell'
-        },
-        {
-            title: 'LOGIN',
-            href: '/auth'
         }
     ];
 </script>
@@ -62,6 +56,15 @@
             <a class="p-2" href={menu.href}>{menu.title}</a>
         </li>
       {/each}
+      {#if user}
+        <li class="hover:text-gray-500">
+          <a class="p-2" href="/logout">LOGOUT</a>
+        </li>
+      {:else}
+        <li class="hover:text-gray-500">
+          <a class="p-2" href="/auth">LOGIN</a>
+        </li>
+      {/if}
     </ul>
   </div>
 </header>

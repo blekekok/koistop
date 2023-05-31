@@ -4,7 +4,7 @@
 
     import { invalidate } from '$app/navigation';
     import { onMount } from 'svelte';
-    import type { LayoutData } from './$types';
+    import type { LayoutData, PageData } from './$types';
 
     export let data: LayoutData;
 
@@ -21,11 +21,13 @@
 
 		return () => subscription.unsubscribe();
 	});
+
+    const user = data.session?.user;
 </script>
 
 
 <main class="w-full h-full bg-black text-black">
-    <Header />
+    <Header {user} />
 
     <slot />
 </main>
