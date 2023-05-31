@@ -27,64 +27,10 @@
     ];  
 </script>
 
-<div class="flex w-full bg-no-repeat text-white" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{img1}');background-attachment:fixed">
-    <div class="flex flex-col items-center py-10">    
+<div class="flex justify-center w-full h-screen bg-no-repeat text-white" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{img1}');background-attachment:fixed">
+    <div class="flex flex-col items-center py-8 px-12">
         <!-- <h1>dsadasdas</h1> -->
-        <!-- <div class="max-w-4xl">
-            <CarouselTransition {images} transitionType="slide" transitionParams="{{duration: 500, easing: bounceInOut}}" showCaptions={false} showThumbs={false}/>
-        </div> -->
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        <h1>dsadasdas</h1>
-        
+        <CarouselTransition {images} slideControls="{false}" loop duration="{5000}" transitionType="fly" transitionParams="{{delay: 250, duration: 300}}" showCaptions={false} showThumbs={false}/>
     </div>
 </div>
 
