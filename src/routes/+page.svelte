@@ -5,6 +5,8 @@
     import { Button } from 'flowbite-svelte';
     import { bounceInOut } from 'svelte/easing';
     import { Carousel, CarouselTransition } from 'flowbite-svelte'
+
+
     export const images = [
     {
         id: 0,
