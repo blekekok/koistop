@@ -26,7 +26,7 @@
 </script>
 
 
-<main class="w-full h-full bg-black text-black">
+<main class="w-full min-h-full bg-black text-black box-border">
     <Header {user} />
 
     <slot />

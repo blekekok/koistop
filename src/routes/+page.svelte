@@ -27,12 +27,64 @@
     ];  
 </script>
 
-<div class="h-screen w-full bg-no-repeat text-white" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{img1}');background-attachment:fixed">
-    <div class="flex justify-center w-full py-10">    
+<div class="flex w-full bg-no-repeat text-white" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{img1}');background-attachment:fixed">
+    <div class="flex flex-col items-center py-10">    
         <!-- <h1>dsadasdas</h1> -->
-        <div class="max-w-4xl">
+        <!-- <div class="max-w-4xl">
             <CarouselTransition {images} transitionType="slide" transitionParams="{{duration: 500, easing: bounceInOut}}" showCaptions={false} showThumbs={false}/>
-        </div>
+        </div> -->
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        <h1>dsadasdas</h1>
+        
     </div>
 </div>
 
