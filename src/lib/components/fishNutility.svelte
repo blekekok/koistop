@@ -1,8 +1,9 @@
-<!-- <script>
+<script>
     import img1 from '$lib/images/tes1.jpg';
     import img2 from '$lib/images/ikan1.jpg';
+    import img3 from '$lib/images/tes2.jpg';
     import { Banner } from "flowbite-svelte";
-    import ikan from '$lib/components/fishNutility.svelte';
+    // import ikan from '$lib/components/fishNutility.svelte';
 
     import { Select, Label } from 'flowbite-svelte';
     /**
@@ -24,7 +25,7 @@
         {
             title: 'Koi fish 2',
             price: 3200000,
-            desc: 'This is koi fish 2'
+            desc: 'This is koi 2'
         },
         {
             title: 'Koi fish 2',
@@ -61,8 +62,8 @@
 
 
 
-<div class="flex min-h-full  bg-no-repeat text-white" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{img2}');background-attachment:fixed">
-    <div class="w-[20%] h-full flex justify-center p-4" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{img2}');background-attachment:fixed">
+<div class="flex min-h-full  bg-no-repeat text-white" style="background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('{img2}');background-attachment:fixed">
+    <div class="w-[20%] h-full flex justify-center p-4">
         <div class="w-full">
             <div>
                 <p>Select:</p>
@@ -78,23 +79,23 @@
             </div>
         </div>
     </div>
-    <div class="w-[80%] flex gap-4 flex-wrap h-full p-4 justify-start align items-center" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{img2}');background-attachment:fixed">
+    <div class="w-[80%] flex gap-4 flex-wrap h-full p-4 justify-start align items-center" style="background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('{img2}'); background-attachment: fixed;">
         {#each items as item}
-          <div class="flex flex-col w-56 p-2 rounded-md gap-2 bg-gray-200" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))">
-            <img class="object-contain w-full h-full rounded-md" src="{img1}" alt="">
-            <div class="rounded-md bg-gray-200" style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))">
-                <h2>{item.title}</h2>
-                <p>{item.desc}</p>
-                <p>Price: ${item.price}</p>
+        <div class="flex flex-col w-56 p-2 rounded-md gap-2" style="background: linear-gradient(rgba(50, 50, 50, 1), rgba(50, 50, 50, 1), rgba(80, 80, 80, 1))">
+            <img class="object-contain w-full h-full rounded-md" src="{img3}" alt="">
+                <a href="/fishDetail">
+                    <div class="rounded-md p-2" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))">
+                        <h2>{item.title}</h2>
+                        <p>Price: ${item.price}</p>
+                        <!-- <p>Seller: {item.desc}</p> -->
+                        <div class="flex place-content-between">
+                            <p>View Details</p>
+                            <p>></p>
+                        </div>
+                    </div>
+                </a>
             </div>
-        </div>
         {/each}
       </div>
 </div>
- -->
 
- <script>
-    import Ikan from '$lib/components/fishNutility.svelte';
- </script>
-
- <Ikan />
