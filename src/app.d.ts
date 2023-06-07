@@ -1,7 +1,8 @@
 import { SupabaseClient, Session } from '@supabase/supabase-js'
 
-// See https://kit.svelte.dev/docs/types#app
-// for information about these interfaces
+/// <reference types="@sveltejs/kit" />
+/// <reference types="unplugin-icons/types/svelte" />
+
 declare global {
 	namespace App {
 		interface Locals {
