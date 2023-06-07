@@ -57,17 +57,50 @@ export const actions: Actions = {
 
     try {
       if (body['password'] !== body['confirm-password']) {
-        throw Error('Password does not match');
+        return fail(422, {
+          error: 'Password does not match'
+        });
       }
 
       if (!body['username'] || !body['email'] || !body['password'] || !body['confirm-password']) {
-        throw Error('Please complete all the forms')
+        return fail(422, {
+          error: 'Please complete all the forms'
+        });
+      }
+
+      const { data: existingUser } = await supabase
+        .from('user')
+        .select('username, email')
+        .or(`username.eq.${body.username},email.eq.${body.email}`);
+
+      if (existingUser) {
+        for (const _user in existingUser) {
+          const user = _user as any
+          if (user.email === body.email) {
+            return fail(422, {
+              error: 'Email already exists'
+            });
+          }
+
+          if (user.username === body.email) {
+            return fail(422, {
+              error: 'Username already exists'
+            });
+          }
+        }
       }
 
       const { data, error } = await supabase.auth.signUp({
         email: body.email as string,
         password: body.password as string
       });
+
+      const { error: err } = await supabase
+        .from('user')
+        .insert({
+          username: body.username,
+          email: body.email
+        });
 
       if (error) {
         if (error instanceof AuthApiError && error.status === 400) {
@@ -79,11 +112,9 @@ export const actions: Actions = {
           error: "Server error. Please try again later.",
         })
       }
-
-      // throw redirect(303, '/auth')
-    } catch (err: any) {
+    } catch (err) {
       return fail(422, {
-        error: err.message
+        error: 'An error occurred'
       });
     }
   }

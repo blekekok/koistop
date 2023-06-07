@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { goto } from '$app/navigation';
-  import { page } from '$app/stores';
   import { enhance } from '$app/forms';
 	import { Button, Input, Label } from "flowbite-svelte";
   import GoogleIcon from '~icons/logos/google-icon';
@@ -9,10 +7,6 @@
   export let data;
 
   $: type = data.slug;
-
-  function reloadParams() {
-    goto(`?${$page.url.searchParams.toString()}`);
-  }
 </script>
 
 <div class="flex flex-grow w-full justify-center items-center">
@@ -33,6 +27,12 @@
     {#if form?.error}
       <div class="w-full py-4 px-4 bg-red-500/80 rounded-md text-white font-bold">
         <span>{form.error}</span>
+      </div>
+    {/if}
+    
+    {#if form && !form.error}
+      <div class="w-full py-4 px-4 bg-green-500/80 rounded-md text-white font-bold">
+        <span>Successfully created account</span>
       </div>
     {/if}
 
@@ -90,15 +90,5 @@
         </form>
       </div>
     {/if}
-    <!-- <form method="POST">
-      <Button class="bg-red-600" type="submit" formaction="?/login-google">Google Login</Button>
-    </form>
-
-    <h1>Login</h1>
-    <form action="?/login" method="POST">
-      <Input name="email" type="email" placeholder="Email"></Input>
-      <Input name="password" type="password" placeholder="Password"></Input>
-      <Button class="bg-red-600" type="submit">Login</Button>
-    </form> -->
   </div>
 </div>
