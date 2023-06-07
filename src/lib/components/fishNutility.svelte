@@ -57,6 +57,41 @@
             price: 3200000,
             desc: 'This is koi fish 2'
         },
+        {
+            title: 'Koi fish 2',
+            price: 3200000,
+            desc: 'This is koi 2'
+        },
+        {
+            title: 'Koi fish 2',
+            price: 3200000,
+            desc: 'This is koi fish 2'
+        },
+        {
+            title: 'Koi fish 2',
+            price: 3200000,
+            desc: 'This is koi fish 2'
+        },
+        {
+            title: 'Koi fish 2',
+            price: 3200000,
+            desc: 'This is koi fish 2'
+        },
+        {
+            title: 'Koi fish 2',
+            price: 3200000,
+            desc: 'This is koi fish 2'
+        },
+        {
+            title: 'Koi fish 2',
+            price: 3200000,
+            desc: 'This is koi fish 2'
+        },
+        {
+            title: 'Koi fish 2',
+            price: 3200000,
+            desc: 'This is koi fish 2'
+        },
     ];
 </script>
 
@@ -79,10 +114,10 @@
             </div>
         </div>
     </div>
-    <div class="w-[80%] flex gap-4 flex-wrap h-full p-4 justify-start align items-center" style="background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('{img2}'); background-attachment: fixed;">
+    <div class="w-[80%] flex gap-3 flex-wrap h-full p-4 justify-start align items-center" style="background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('{img2}'); background-attachment: fixed;">
         {#each items as item}
         <div class="flex flex-col w-56 p-2 rounded-md gap-2" style="background: linear-gradient(rgba(50, 50, 50, 1), rgba(50, 50, 50, 1), rgba(80, 80, 80, 1))">
-            <img class="object-contain w-full h-full rounded-md" src="{img3}" alt="">
+            <img class="object-contain w-full h-full rounded-md" src="{img2}" alt="">
                 <a href="/fishDetail">
                     <div class="rounded-md p-2" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))">
                         <h2>{item.title}</h2>
