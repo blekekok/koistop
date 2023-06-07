@@ -52,6 +52,7 @@ export const actions: Actions = {
 
       throw redirect(303, '/');
     } catch (err: any) {
+      console.log(err);
       return fail(422, {
         error: 'An error occurred'
       })
@@ -123,6 +124,7 @@ export const actions: Actions = {
         success: true
       }
     } catch (err) {
+      console.log(err);
       return fail(422, {
         error: 'An error occurred'
       });
