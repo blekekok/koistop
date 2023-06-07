@@ -1,5 +1,5 @@
 import { AuthApiError } from "@supabase/supabase-js";
-import { redirect, type Actions, fail } from "@sveltejs/kit";
+import { redirect, type Actions, fail, Redirect } from "@sveltejs/kit";
 import { SITE_URL } from '$env/static/private';
 
 export const actions: Actions = {
@@ -26,6 +26,7 @@ export const actions: Actions = {
   },
   login: async ({ request, locals: { supabase } }) => {
     const body = Object.fromEntries(await request.formData());
+    let success = false;
 
     try {
       if (!body['email'] || !body['password']) {
@@ -50,12 +51,15 @@ export const actions: Actions = {
         });
       }
 
-      throw redirect(303, '/');
+      success = true;
     } catch (err: any) {
-      console.log(err);
       return fail(422, {
         error: 'An error occurred'
       })
+    }
+
+    if (success) {
+      throw redirect(301, '/');
     }
 
   },

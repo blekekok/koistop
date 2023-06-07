@@ -24,7 +24,7 @@
     ];
 </script>
 
-<header class="flex justify-between items-center bg-black/50 w-full h-24 sticky top-0 text-lg text-white z-10">
+<header class="flex justify-between items-center bg-black/50 w-full h-[76px] sticky top-0 text-lg text-white z-10">
   <a href="/" class="w-48 px-8">
     <img class="w-full invert" src={img} alt="">
   </a>
