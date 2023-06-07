@@ -29,7 +29,7 @@
         <span>{form.error}</span>
       </div>
     {/if}
-    
+
     {#if form && !form.error}
       <div class="w-full py-4 px-4 bg-green-500/80 rounded-md text-white font-bold">
         <span>Successfully created account</span>
@@ -68,11 +68,11 @@
           <div class="flex flex-col gap-4">
             <div class="flex flex-col gap-1">
               <Label for="email-input" defaultClass="text-lg text-white font-bold cursor-pointer">EMAIL ADDRESS</Label>
-              <Input id="email-input" type="email"></Input>
+              <Input id="email-input" name="email" type="email"></Input>
             </div>
             <div class="flex flex-col gap-1">
               <Label for="password-input" defaultClass="text-lg text-white font-bold cursor-pointer">PASSWORD</Label>
-              <Input id="password-input" type="password"></Input>
+              <Input id="password-input" name="password" type="password"></Input>
             </div>
           </div>
           <Button type="submit" pill>

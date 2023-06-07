@@ -28,13 +28,18 @@ export const actions: Actions = {
     const body = Object.fromEntries(await request.formData());
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      if (!body['email'] || !body['password']) {
+        return fail(422, {
+          error: 'Please fill in both email and password'
+        });
+      }
+
+      const { error } = await supabase.auth.signInWithPassword({
         email: body.email as string,
         password: body.password as string
       });
-  
+
       if (error) {
-        console.log(error);
         if (error instanceof AuthApiError && error.status === 400) {
           return fail(400, {
             error: "Invalid credentials",
@@ -44,10 +49,11 @@ export const actions: Actions = {
           message: "Server error. Try again later.",
         });
       }
+
       throw redirect(303, '/');
     } catch (err: any) {
       return fail(422, {
-        error: err.message
+        error: 'An error occurred'
       })
     }
 
@@ -68,21 +74,24 @@ export const actions: Actions = {
         });
       }
 
-      const { data: existingUser } = await supabase
+      const { data: existingUser, error: existingUserError } = await supabase
         .from('user')
         .select('username, email')
         .or(`username.eq.${body.username},email.eq.${body.email}`);
 
+      if (existingUserError) {
+        throw Error();
+      }
+
       if (existingUser) {
-        for (const _user in existingUser) {
-          const user = _user as any
+        for (const user of existingUser) {
           if (user.email === body.email) {
             return fail(422, {
               error: 'Email already exists'
             });
           }
 
-          if (user.username === body.email) {
+          if (user.username === body.username) {
             return fail(422, {
               error: 'Username already exists'
             });
@@ -90,27 +99,28 @@ export const actions: Actions = {
         }
       }
 
-      const { data, error } = await supabase.auth.signUp({
+      const { error: authError } = await supabase.auth.signUp({
         email: body.email as string,
         password: body.password as string
       });
 
-      const { error: err } = await supabase
+      if (authError) {
+        throw Error();
+      }
+
+      const { error: userError } = await supabase
         .from('user')
         .insert({
           username: body.username,
           email: body.email
         });
 
-      if (error) {
-        if (error instanceof AuthApiError && error.status === 400) {
-          return fail(400, {
-            error: "Invalid email or password",
-          })
-        }
-        return fail(500, {
-          error: "Server error. Please try again later.",
-        })
+      if (userError) {
+        throw Error();
+      }
+
+      return {
+        success: true
       }
     } catch (err) {
       return fail(422, {
