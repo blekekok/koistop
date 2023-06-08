@@ -1,5 +1,5 @@
 import { AuthApiError } from "@supabase/supabase-js";
-import { redirect, type Actions, fail, Redirect } from "@sveltejs/kit";
+import { redirect, type Actions, fail } from "@sveltejs/kit";
 import { SITE_URL } from '$env/static/private';
 
 export const actions: Actions = {
@@ -61,10 +61,10 @@ export const actions: Actions = {
     if (success) {
       throw redirect(301, '/');
     }
-
   },
   register: async ({ request, locals: { supabase } }) => {
     const body = Object.fromEntries(await request.formData());
+    const passwordLength = 6;
 
     try {
       if (body['password'] !== body['confirm-password']) {
@@ -79,13 +79,19 @@ export const actions: Actions = {
         });
       }
 
+      if (body['password'].length < passwordLength) {
+        return fail(422, {
+          error: `Please enter a password longer than ${passwordLength} characters!`
+        });
+      }
+
       const { data: existingUser, error: existingUserError } = await supabase
-        .from('user')
+        .from('User')
         .select('username, email')
         .or(`username.eq.${body.username},email.eq.${body.email}`);
 
       if (existingUserError) {
-        throw Error();
+        throw existingUserError;
       }
 
       if (existingUser) {
@@ -110,18 +116,18 @@ export const actions: Actions = {
       });
 
       if (authError) {
-        throw Error();
+        throw authError;
       }
 
       const { error: userError } = await supabase
-        .from('user')
+        .from('User')
         .insert({
           username: body.username,
           email: body.email
         });
 
       if (userError) {
-        throw Error();
+        throw userError;
       }
 
       return {

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { enhance } from '$app/forms';
-	import { Button, Input, Label } from "flowbite-svelte";
+	import { Button, Input, Label, FloatingLabelInput } from "flowbite-svelte";
   import GoogleIcon from '~icons/logos/google-icon';
 
   export let form;
@@ -41,20 +41,16 @@
         <form action="?/register" method="POST" class="flex flex-col gap-8">
           <div class="flex flex-col gap-4">
             <div class="flex flex-col gap-1">
-              <Label for="username-input" defaultClass="text-lg text-white font-bold cursor-pointer">USERNAME</Label>
-              <Input id="username-input" name="username" type="text" required></Input>
+              <FloatingLabelInput id="username-input" name="username" type="text" required label="Username" class="text-white font-semibold text-lg"></FloatingLabelInput>
             </div>
             <div class="flex flex-col gap-1">
-              <Label for="email-input" defaultClass="text-lg text-white font-bold cursor-pointer">EMAIL ADDRESS</Label>
-              <Input id="email-input" name="email" type="email" required></Input>
+              <FloatingLabelInput id="email-input" name="email" type="email" required label="Email" class="text-white font-semibold text-lg"></FloatingLabelInput>
             </div>
             <div class="flex flex-col gap-1">
-              <Label for="password-input" defaultClass="text-lg text-white font-bold cursor-pointer">PASSWORD</Label>
-              <Input id="password-input" name="password" type="password" required></Input>
+              <FloatingLabelInput id="password-input" name="password" type="password" required label="Password" class="text-white font-semibold text-lg"></FloatingLabelInput>
             </div>
             <div class="flex flex-col gap-1">
-              <Label for="confirm-password-input" defaultClass="text-lg text-white font-bold cursor-pointer">CONFIRM PASSWORD</Label>
-              <Input id="confirm-password-input" name="confirm-password" type="password" required></Input>
+              <FloatingLabelInput id="confirm-password-input" name="confirm-password" type="password" required label="Confirm Password" class="text-white font-semibold text-lg"></FloatingLabelInput>
             </div>
           </div>
           <Button type="submit" pill>
@@ -67,12 +63,10 @@
         <form action="?/login" method="POST" class="flex flex-col gap-8" use:enhance>
           <div class="flex flex-col gap-4">
             <div class="flex flex-col gap-1">
-              <Label for="email-input" defaultClass="text-lg text-white font-bold cursor-pointer">EMAIL ADDRESS</Label>
-              <Input id="email-input" name="email" type="email"></Input>
+              <FloatingLabelInput id="email-input" name="email" type="email" label="Email" class="text-white font-semibold text-lg"></FloatingLabelInput>
             </div>
             <div class="flex flex-col gap-1">
-              <Label for="password-input" defaultClass="text-lg text-white font-bold cursor-pointer">PASSWORD</Label>
-              <Input id="password-input" name="password" type="password"></Input>
+              <FloatingLabelInput id="password-input" name="password" type="password" label="Password" class="text-white font-semibold text-lg"></FloatingLabelInput>
             </div>
           </div>
           <Button type="submit" pill>

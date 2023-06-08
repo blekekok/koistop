@@ -23,7 +23,7 @@
 		return () => subscription.unsubscribe();
 	});
 
-    const user = data.session?.user;
+    $: user = data.session?.user;
 </script>
 
 <svelte:head>

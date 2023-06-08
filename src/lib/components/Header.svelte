@@ -2,7 +2,7 @@
   import { Button, Search } from 'flowbite-svelte';
   import img from '$lib/images/logoikangud.svg';
 
-  export let user: any = null;
+  export let user: any;
 
   const menus = [
         {
