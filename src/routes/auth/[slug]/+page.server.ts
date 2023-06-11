@@ -112,7 +112,10 @@ export const actions: Actions = {
 
       const { error: authError } = await supabase.auth.signUp({
         email: body.email as string,
-        password: body.password as string
+        password: body.password as string,
+        options: {
+          emailRedirectTo: `${SITE_URL}auth/callback`,
+        }
       });
 
       if (authError) {
