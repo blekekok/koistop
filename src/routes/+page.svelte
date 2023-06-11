@@ -33,6 +33,9 @@
     <div class="flex flex-col items-center py-8 px-12">
         <!-- <h1>dsadasdas</h1> -->
         <CarouselTransition {images} slideControls="{false}" loop duration="{5000}" transitionType="fly" transitionParams="{{delay: 250, duration: 300}}" showCaptions={false} showThumbs={false}/>
+        <div class="pt-5">
+            <Button href="/fish">Shop Now</Button>
+        </div>
     </div>
 </div>
 
