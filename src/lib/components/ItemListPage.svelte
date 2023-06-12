@@ -1,33 +1,20 @@
-<script>
+<script lang="ts">
     import fishImage from '$lib/images/ikan1.jpg';
 
     import { Select, Label } from 'flowbite-svelte';
     /**
 	 * @type {any}
 	 */
-    let selected;
+    let selected: any;
     let sorting = [
         {value:"us", name: "United States"},
         {value:"ca", name: "Canada"},
         {value:"fr", name: "France"},
     ]
 
-    export let items = [
-        {
-            name: 'Koi fish 1',
-            price: 3500000,
-            seller: {
-                username: 'Test'
-            }
-        },
-        {
-            name: 'Koi fish 2',
-            price: 3200000,
-            seller: {
-                username: 'Test'
-            }
-        }
-    ];
+    export let type: any;
+
+    export let items: any;
 
     const numberFormat = new Intl.NumberFormat();
 </script>
@@ -51,7 +38,7 @@
     </div>
     <div class="w-[80%] flex gap-3 flex-wrap h-full p-4 justify-start align items-center">
         {#each items as item}
-        <a href="/fishDetail">
+        <a href="/{type}/{item.id}">
             <div class="flex flex-col w-56 p-1 rounded-md gap-1 bg-gray-600/70">
                 <img class="object-contain w-full h-full rounded-md" src="{fishImage}" alt="">
                 <div class="rounded-md px-1">

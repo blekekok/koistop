@@ -4,10 +4,10 @@ export const load = async ({ fetch }) => {
   };
 
   try {
-    const response = await fetch('/api/fish/list');
+    const response = await fetch('/api/utility/list');
 
     if (response.status !== 200) {
-      throw Error('Fishes cant be retrieved')
+      throw Error('Utilty cant be retrieved')
     }
 
     const content = await response.json();

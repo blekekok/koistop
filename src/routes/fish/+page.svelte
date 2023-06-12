@@ -1,9 +1,9 @@
 <script lang="ts">
-    import ItemPage from '$lib/components/ItemPage.svelte';
+    import ItemPage from '$lib/components/ItemListPage.svelte';
 
     export let data;
 
     $: items = data.content;
 </script>
 
-<ItemPage {items} />
+<ItemPage {items} type="fish" />
