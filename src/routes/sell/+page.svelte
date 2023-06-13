@@ -103,13 +103,17 @@ function toggleModal(){
                                     <label class="block text-sm font-bold mb-2" for="fishtype">
                                         Fish Type
                                     </label>
-                                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishtype" type="text" placeholder="Fish Type">
+                                    <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishtype">
+                                        <option value="">Select a type...</option>
+                                        <option value="saltwater">Akrapovic</option>
+                                        <option value="freshwater">Showa</option>
+                                    </select>    
                                 </div>
                                 <div class="mb-4">
                                     <label class="block text-sm font-bold mb-2" for="fishdescription">
                                         Fish Description
                                     </label>
-                                    <textarea class="shadow text-black appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="fishdescription" rows="3" placeholder="Fish Description"></textarea>
+                                    <textarea class="shadow resize-none text-black appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="fishdescription" rows="3" placeholder="Fish Description"></textarea>
                                 </div>
                             </form>
                         </div>
