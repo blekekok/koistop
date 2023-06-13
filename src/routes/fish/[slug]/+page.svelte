@@ -46,8 +46,6 @@
             commentError = content.message;
         }
 
-        console.log(content.data);
-
         comments = content.data;
     }
 

@@ -2,25 +2,6 @@
 import { Button } from 'flowbite-svelte';
 import Logocart from '~icons/material-symbols/add-shopping-cart'
 
-    const menus = [
-        {
-            title: 'FISH',
-            href: '/fish'
-        },
-        {
-            title: 'UTILITY',
-            href: '/utility'
-        },
-        {
-            title: 'CART',
-            href: '/cart'
-        },
-        {
-            title: 'SELL',
-            href: '/sell'
-        }
-    ];
-
 let showModal = false;
 
 function toggleModal(){
@@ -38,25 +19,25 @@ function toggleModal(){
         <!-- sell 4 tombol -->
         <div class="flex flex-wrap text-2xl justify-between w-full">
             <div class="flex flex-col items-center">
-                <a href="" class="flex flex-col items-center">
+                <a href="#new-order" class="flex flex-col items-center">
                     <Logocart class="text-6xl"></Logocart>
                     NEW ORDER
                 </a>
             </div>
             <div class="flex flex-col items-center">
-                <a href="" class="flex flex-col items-center">
+                <a href="#ready" class="flex flex-col items-center">
                     <Logocart class="text-6xl"></Logocart>
                     READY
                 </a>
             </div>
             <div class="flex flex-col items-center">
-                <a href="" class="flex flex-col items-center">
+                <a href="#delivering" class="flex flex-col items-center">
                     <Logocart class="text-6xl"></Logocart>
                     DELIVERING
                 </a>
             </div>
             <div class="flex flex-col items-center">
-                <a href="" class="flex flex-col items-center">
+                <a href="#delivered" class="flex flex-col items-center">
                     <Logocart class="text-6xl"></Logocart>
                     DELIVERED
                 </a>
@@ -107,7 +88,7 @@ function toggleModal(){
                                         <option value="">Select a type...</option>
                                         <option value="saltwater">Akrapovic</option>
                                         <option value="freshwater">Showa</option>
-                                    </select>    
+                                    </select>
                                 </div>
                                 <div class="mb-4">
                                     <label class="block text-sm font-bold mb-2" for="fishdescription">

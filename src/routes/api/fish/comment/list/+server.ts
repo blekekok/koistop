@@ -20,7 +20,8 @@ export const POST = (async ({ request, locals: { supabase } }) => {
         author ( id, username ),
         createdAt
       `)
-      .eq('fish', id);
+      .eq('fish', id)
+      .order('createdAt', { ascending: false });
 
     if (error) throw error;
 

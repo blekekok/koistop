@@ -1,6 +1,6 @@
 <script lang="ts">
-    import img1 from '$lib/images/tes2.jpg';
-    import img3 from '$lib/images/ikan1.jpg';
+    import defaultUser from '$lib/images/default_user.jpg';
+    import defaultFish from '$lib/images/ikan1.jpg';
     import { Button } from 'flowbite-svelte';
     import { fly } from 'svelte/transition';
 
@@ -23,11 +23,11 @@
 
 <div class="min-h-full bg-no-repeat text-white">
     <div class="flex items-center content-center p-10">
-        <div class="bg-blue-950 rounded-md p-8 flex flex-col" style="background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));">
+        <div class="bg-black/40 rounded-md p-8 flex flex-col">
             <h1 class="text-5xl justify-center flex">{item.name}</h1>
             <div class="flex pt-8">
                 <div class="w-[40%]">
-                    <img src="{img3}" class="w-full h-full" alt="">
+                    <img src="{item.image}" class="w-full h-full" alt="">
                 </div>
                 <div class="flex flex-col place-content-between w-[60%] pl-10">
                     <div>
@@ -44,7 +44,7 @@
             </div>
             <h1 class="text-3xl pt-10 pb-5">RECOMMENDED ITEM:</h1>
             <div class="w-[40%]">
-                <img src="{img3}" class="w-full h-full" alt="">
+                <img src="{defaultFish}" class="w-full h-full" alt="">
             </div>
             <h1 class="text-3xl pt-10 pb-5">ASK SELLER:</h1>
             {#if commentError}
@@ -55,7 +55,7 @@
             {#if user}
                 <div class="flex flex-row items-center pb-6">
                     <div class="w-12 h-12 mr-4">
-                        <img class="rounded-xl object-cover w-full h-full" src="{img1}" alt="">
+                        <img class="rounded-full object-cover w-full h-full" src="{user.image ?? defaultUser}" alt="">
                     </div>
                     <div class="h-full flex-grow">
                         <input bind:value={userComment} class="w-full px-3 py-2 rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="comment" type="text" placeholder="Write a comment..." />
@@ -73,7 +73,7 @@
                     {#each comments as comment}
                         <div class="flex flex-row items-center pb-6">
                             <div class="w-12 h-12 mr-4">
-                                <img class="rounded-xl object-cover w-full h-full" src="{img1}" alt="">
+                                <img class="rounded-full object-cover w-full h-full" src="{user.image ?? defaultUser}" alt="">
                             </div>
                             <div>
                                 <h2 class="font-bold">{comment.author.username} {comment.author.username === item.seller.username ? ' - Seller' : ''}</h2>

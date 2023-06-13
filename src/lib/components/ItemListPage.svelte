@@ -28,7 +28,7 @@
             <a href="/{type}/{item.id}">
                 <div class="flex flex-col w-56 p-1 rounded-md gap-1 bg-gray-600/70">
                     <div class="h-32 overflow-hidden rounded-md">
-                        <img class="object-cover w-full h-full" src="{item.image || fishImage}" alt="">
+                        <img class="object-cover w-full h-full" src="{item.image ?? fishImage}" alt="">
                     </div>
                     <div class="rounded-md px-1">
                         <h2 class="font-light">{item.name}</h2>

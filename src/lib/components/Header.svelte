@@ -48,7 +48,7 @@
       {#if user}
         <li class="h-full hover:text-gray-500">
           <Button btnClass="h-full bg-transparent">
-            <img id="user" src={defaultUser} alt="" class="max-h-full p-4 rounded-full" />
+            <img id="user" src={user.image ?? defaultUser} alt="" class="max-h-full p-4 rounded-full" />
           </Button>
           <Popover triggeredBy="#user" placement="bottom" class="w-64 text-sm font-light text-gray-500 bg-white dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
             <div class="flex flex-col gap-4 p-3">
