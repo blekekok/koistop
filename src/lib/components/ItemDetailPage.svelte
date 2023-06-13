@@ -41,8 +41,8 @@
             <div class="w-[40%]">
                 <img src="{img3}" class="w-full h-full" alt="">
             </div>
-            <h1 class="text-3xl pt-10 pb-5">COMMENTS:</h1>
-            <div class="flex flex-row items-center">
+            <h1 class="text-3xl pt-10 pb-5">ASK SELLER:</h1>
+            <div class="flex flex-row items-center pb-6">
                 <div class="w-12 h-12 mr-4">
                     <img class="rounded-xl object-cover w-full h-full" src="{img1}" alt="">
                 </div>
@@ -56,6 +56,15 @@
                     <Button class="my-4 w-[10%]">Post</Button>
                 </div>
             {/if}
+            <div class="flex flex-row items-center pb-6">
+                <div class="w-12 h-12 mr-4">
+                    <img class="rounded-xl object-cover w-full h-full" src="{img1}" alt="">
+                </div>
+                <div>
+                    <h2 class="font-bold">Bang Asep</h2>
+                    <h1>The fish is not fresh. i want refund :((((((((</h1>
+                </div>
+            </div>
         </div>
     </div>
 </div>
