@@ -15,7 +15,7 @@
     <div class="w-[20%] h-full flex justify-center p-4">
         <div class="flex flex-col gap-4 w-full">
             {#each filters as filter}
-                <div class="w-full">
+                <div class="flex flex-col gap-2 w-full">
                     <Label defaultClass="font-semibold text-white" for={filter.name}>{filter.label}</Label>
                     <Select id={filter.name} class="w-full" items={filter.selections} bind:value={filter.selected} on:change={onChange}/>
                 </div>

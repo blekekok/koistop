@@ -1,18 +1,23 @@
 <script lang="ts">
-    import img2 from '$lib/images/ikan1.jpg';
     import img1 from '$lib/images/tes2.jpg';
     import img3 from '$lib/images/ikan1.jpg';
     import { Button } from 'flowbite-svelte';
+    import { fly } from 'svelte/transition';
 
     export let item: any;
+    export let user: any;
 
     const numberFormat = new Intl.NumberFormat();
 
-    let comment = '';
-    $: showButton = comment !== '';
+    $: showButton = userComment !== '';
+
+    export let userComment = '';
+    export let comments: any = null;
+    export let submitComment: any;
+    export let commentError: any;
 
     function ClearC(){
-        comment = '';
+        userComment = '';
     }
 </script>
 
@@ -27,7 +32,7 @@
                 <div class="flex flex-col place-content-between w-[60%] pl-10">
                     <div>
                         <h3 class="font-semibold text-3xl">Rp. {numberFormat.format(item.price)}</h3>
-                        <h4 class="py-3">Seller: {item.seller.username}</h4>                 
+                        <h4 class="py-3">Seller: {item.seller.username}</h4>
                         <p>{item.description}</p>
                     </div>
                     <div class="flex justify-end">
@@ -42,28 +47,43 @@
                 <img src="{img3}" class="w-full h-full" alt="">
             </div>
             <h1 class="text-3xl pt-10 pb-5">ASK SELLER:</h1>
-            <div class="flex flex-row items-center pb-6">
-                <div class="w-12 h-12 mr-4">
-                    <img class="rounded-xl object-cover w-full h-full" src="{img1}" alt="">
-                </div>
-                <div class="h-full flex-grow">
-                    <input bind:value={comment} class="w-full px-3 py-2 rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="comment" type="text" placeholder="Write a comment..." />
-                </div>
-            </div>
-            {#if showButton}
-                <div class="flex justify-end gap-5">
-                    <Button class="my-4 w-[10%]" on:click={ClearC}>Cancel</Button>
-                    <Button class="my-4 w-[10%]">Post</Button>
+            {#if commentError}
+                <div class="flex h-12 w-full justify-start items-center px-4 my-4 bg-red-500/70 rounded-xl">
+                    <span class="text-white font-semibold">{commentError}</span>
                 </div>
             {/if}
-            <div class="flex flex-row items-center pb-6">
-                <div class="w-12 h-12 mr-4">
-                    <img class="rounded-xl object-cover w-full h-full" src="{img1}" alt="">
+            {#if user}
+                <div class="flex flex-row items-center pb-6">
+                    <div class="w-12 h-12 mr-4">
+                        <img class="rounded-xl object-cover w-full h-full" src="{img1}" alt="">
+                    </div>
+                    <div class="h-full flex-grow">
+                        <input bind:value={userComment} class="w-full px-3 py-2 rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="comment" type="text" placeholder="Write a comment..." />
+                    </div>
                 </div>
-                <div>
-                    <h2 class="font-bold">Bang Asep</h2>
-                    <h1>The fish is not fresh. i want refund :((((((((</h1>
-                </div>
+                {#if showButton}
+                    <div class="flex justify-end gap-5" transition:fly>
+                        <Button class="my-4 w-[10%]" on:click={ClearC}>Cancel</Button>
+                        <Button class="my-4 w-[10%]" on:click={submitComment}>Post</Button>
+                    </div>
+                {/if}
+            {/if}
+            <div class="flex flex-col">
+                {#if comments}
+                    {#each comments as comment}
+                        <div class="flex flex-row items-center pb-6">
+                            <div class="w-12 h-12 mr-4">
+                                <img class="rounded-xl object-cover w-full h-full" src="{img1}" alt="">
+                            </div>
+                            <div>
+                                <h2 class="font-bold">{comment.author.username} {comment.author.username === item.seller.username ? ' - Seller' : ''}</h2>
+                                <h1>{comment.content}</h1>
+                            </div>
+                        </div>
+                    {/each}
+                {:else}
+                    <span class="font-semibold text-white">Loading comments...</span>
+                {/if}
             </div>
         </div>
     </div>

@@ -18,6 +18,13 @@ export const POST = (async ({ request, locals: { supabase } }) => {
         image
       `);
 
+    if (body?.fish_type) {
+      const type = body.fish_type;
+      if (type !== 'all') {
+        req = req.eq('fishType', type);
+      }
+    }
+
     if (body?.sort) {
       const sort = body.sort;
       if (['a-z', 'z-a'].includes(sort)) {
@@ -26,13 +33,6 @@ export const POST = (async ({ request, locals: { supabase } }) => {
         req = req.order('price', { ascending: sort === 'cheapest' });
       } else if (['recent', 'oldest'].includes(sort)) {
         req = req.order('createdAt', { ascending: sort === 'oldest' })
-      }
-    }
-
-    if (body?.fish_type) {
-      const type = body.fish_type;
-      if (type !== 'all') {
-        req = req.eq('fishType', type);
       }
     }
 
@@ -48,6 +48,6 @@ export const POST = (async ({ request, locals: { supabase } }) => {
     console.log(err);
     return json({
       message: 'Failed to respond'
-    }, { status: 400 })
+    }, { status: 400 });
   }
 });

@@ -1,9 +1,13 @@
 import { redirect } from "@sveltejs/kit";
 
-export const load = async ({ fetch, params }) => {
+export const load = async ({ fetch, params, parent }) => {
   const data = {
+    user: null,
     content: {}
   };
+
+  const { profile }: any = await parent();
+  data.user = profile;
 
   try {
     const response = await fetch('/api/fish/detail',

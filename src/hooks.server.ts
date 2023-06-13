@@ -21,6 +21,28 @@ export const handle: Handle = async ({ event, resolve }) => {
     return session
   }
 
+  event.locals.getProfile = async () => {
+    const session = await event.locals.getSession();
+    if (!session) {
+			return null;
+		}
+
+		const user = session.user;
+
+		try {
+			const { data, error } = await event.locals.supabase
+				.from('User')
+				.select()
+				.eq('email', user.email);
+
+			if (error) throw error;
+
+			return data[0];
+		} catch (err) {
+			return null;
+		}
+  }
+
   return resolve(event, {
     /**
      * There´s an issue with `filterSerializedResponseHeaders` not working when using `sequence`
