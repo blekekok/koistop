@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { Button, Search } from 'flowbite-svelte';
+  import { Button, Search, Popover } from 'flowbite-svelte';
   import img from '$lib/images/logoikangud.svg';
+  import defaultUser from '$lib/images/default_user.jpg';
 
   export let user: any;
 
@@ -38,15 +39,24 @@
       </Button>
     </div>
 
-    <ul class="flex items-center h-full gap-10 font-bold font-sans text-lg px-8">
+    <ul class="h-full flex items-center gap-10 font-bold font-sans text-lg px-8">
       {#each menus as menu}
         <li class="hover:text-gray-500">
             <a class="p-2" href={menu.href}>{menu.title}</a>
         </li>
       {/each}
       {#if user}
-        <li class="hover:text-gray-500">
-          <a class="p-2" href="/logout">LOGOUT</a>
+        <li class="h-full hover:text-gray-500">
+          <Button btnClass="h-full bg-transparent">
+            <img id="user" src={defaultUser} alt="" class="max-h-full p-4 rounded-full" />
+          </Button>
+          <Popover triggeredBy="#user" placement="bottom" class="w-64 text-sm font-light text-gray-500 bg-white dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+            <div class="flex flex-col gap-4 p-3">
+              <span class="font-semibold text-black text-lg">Welcome, {user.username}</span>
+              <div class="h-[1px] bg-slate-800 w-full"></div>
+              <Button href="/logout">Logout</Button>
+            </div>
+          </Popover>
         </li>
       {:else}
         <li class="hover:text-gray-500">

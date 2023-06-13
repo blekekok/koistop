@@ -9,7 +9,7 @@
 
     export let data: LayoutData;
 
-	$: ({ supabase, session } = data);
+	$: ({ supabase, session, profile } = data);
 
 	onMount(() => {
 		const {
@@ -31,7 +31,7 @@
 </svelte:head>
 
 <main class="flex flex-col w-full min-h-full bg-black text-black box-border" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{backgroundImage}');background-attachment:fixed">
-    <Header {user} />
+    <Header user={profile} />
 
     <slot />
 </main>

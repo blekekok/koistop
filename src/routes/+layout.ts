@@ -16,5 +16,27 @@ export const load: LayoutLoad = async ({ fetch, data, depends }) => {
 		data: { session }
 	} = await supabase.auth.getSession();
 
-	return { supabase, session };
+	const getProfile = async () => {
+		if (!session) {
+			return null;
+		}
+
+		const user = session.user;
+
+		try {
+			const { data, error } = await supabase
+				.from('User')
+				.select()
+				.eq('email', user.email);
+
+			if (error) throw error;
+
+			return data[0];
+		} catch (err) {
+			return null;
+		}
+	};
+	const profile = await getProfile();
+
+	return { supabase, session, profile };
 };
