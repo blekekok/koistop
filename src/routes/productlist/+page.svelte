@@ -21,8 +21,8 @@
             </div>
             <div class="justify-between flex flex-col w-full">
                 <div>
-                    <h1>Fish Name</h1>
-                    <h1>Price</h1>
+                    <h1 class="font-bold text-2xl">Fish Name</h1>
+                    <h1 class="font-semibold">Price</h1>
                     <h1>Seller</h1>
                     <h1>Desc</h1>
                 </div>
