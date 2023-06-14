@@ -11,7 +11,7 @@
             label: 'Search',
             name: 'search',
             type: 'textbox',
-            value: ''
+            value: $page.url.searchParams.get('search') ?? ''
         },
         {
             label: 'Sort by',

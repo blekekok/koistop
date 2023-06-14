@@ -1,6 +1,8 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+  import { page } from '$app/stores';
   import ItemPage from '$lib/components/ItemListPage.svelte';
-	import { onMount } from 'svelte';
+  import { onMount } from 'svelte';
 
   $: items = null;
 
@@ -9,7 +11,7 @@
             label: 'Search',
             name: 'search',
             type: 'textbox',
-            value: ''
+            value: $page.url.searchParams.get('search') ?? ''
         },
         {
             label: 'Sort by',
