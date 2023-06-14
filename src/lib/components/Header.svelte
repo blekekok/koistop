@@ -23,10 +23,10 @@
             title: 'UTILITY',
             href: '/utility'
         },
-        {
-            title: 'CART',
-            href: '/cart'
-        },
+        // {
+        //     title: 'CART',
+        //     href: '/cart'
+        // },
         {
             title: 'SELL',
             href: '/sell'
