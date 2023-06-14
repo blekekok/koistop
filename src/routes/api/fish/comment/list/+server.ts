@@ -17,7 +17,7 @@ export const POST = (async ({ request, locals: { supabase } }) => {
         id,
         content,
         fish,
-        author ( id, username ),
+        author ( id, username, image ),
         createdAt
       `)
       .eq('fish', id)

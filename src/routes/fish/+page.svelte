@@ -1,10 +1,18 @@
 <script lang="ts">
     import ItemPage from '$lib/components/ItemListPage.svelte';
 	import { onMount } from 'svelte';
+    import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 
     $: items = null;
 
     $: filters = [
+        {
+            label: 'Search',
+            name: 'search',
+            type: 'textbox',
+            value: ''
+        },
         {
             label: 'Sort by',
             name: 'sort',
@@ -73,7 +81,22 @@
 
         const filtering: any = {};
         filters.forEach((filter) => {
-            filtering[filter.name] = filter.selected;
+            if (filter.type === 'select') {
+                filtering[filter.name] = filter.selected;
+            }
+
+            if (filter.type === 'textbox') {
+                filtering[filter.name] = filter.value;
+            }
+
+            if (filter.name === 'search') {
+                $page.url.searchParams.set('search', filter.value ?? '');
+                if (filter.value) {
+                    goto(`?${$page.url.searchParams.toString()}`);
+                } else {
+                    goto('?');
+                }
+            }
         });
 
         const response = await fetch('/api/fish/list', {

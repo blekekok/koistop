@@ -1,7 +1,7 @@
 <script lang="ts">
     import fishImage from '$lib/images/ikan1.jpg';
 
-    import { Select, Label } from 'flowbite-svelte';
+    import { Select, Label, Input } from 'flowbite-svelte';
 
     export let type: any;
     export let items: any;
@@ -15,10 +15,17 @@
     <div class="w-[20%] h-full flex justify-center p-4">
         <div class="flex flex-col gap-4 w-full">
             {#each filters as filter}
-                <div class="flex flex-col gap-2 w-full">
-                    <Label defaultClass="font-semibold text-white" for={filter.name}>{filter.label}</Label>
-                    <Select id={filter.name} class="w-full" items={filter.selections} bind:value={filter.selected} on:change={onChange}/>
-                </div>
+                {#if filter.type === 'select'}
+                    <div class="flex flex-col gap-2 w-full">
+                        <Label defaultClass="font-semibold text-white" for={filter.name}>{filter.label}</Label>
+                        <Select id={filter.name} class="w-full" items={filter.selections} bind:value={filter.selected} on:change={onChange}/>
+                    </div>
+                {:else if filter.type === 'textbox'}
+                    <div class="flex flex-col gap-2 w-full">
+                        <Label defaultClass="font-semibold text-white" for={filter.name}>{filter.label}</Label>
+                        <Input id={filter.name} class="w-full" bind:value={filter.value} on:change={onChange}/>
+                    </div>
+                {/if}
             {/each}
         </div>
     </div>

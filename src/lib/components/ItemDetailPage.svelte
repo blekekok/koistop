@@ -76,7 +76,7 @@
                         {#each comments as comment}
                             <div class="flex flex-row items-center pb-6">
                                 <div class="w-12 h-12 mr-4">
-                                    <img class="rounded-full object-cover w-full h-full" src="{user.image ?? defaultUser}" alt="">
+                                    <img class="rounded-full object-cover w-full h-full" src="{comment.author.image ?? defaultUser}" alt="">
                                 </div>
                                 <div>
                                     <h2 class="font-bold">{comment.author.username} {comment.author.username === item.seller.username ? ' - Seller' : ''}</h2>

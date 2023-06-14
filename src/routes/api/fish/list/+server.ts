@@ -35,6 +35,11 @@ export const POST = (async ({ request, locals: { supabase } }) => {
       }
     }
 
+    if (body?.search) {
+      const search = body.search;
+      req = req.textSearch('name', search);
+    }
+
     const { data: fishData, error: fishErr } = await req;
 
     if (fishErr) throw fishErr;

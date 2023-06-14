@@ -26,6 +26,11 @@ export const POST = (async ({ request, locals: { supabase } }) => {
       }
     }
 
+    if (body?.search) {
+      const search = body.search;
+      req = req.textSearch('name', search);
+    }
+
     const { data: utilityData, error: utilityErr } = await req;
 
     if (utilityErr) throw utilityErr;

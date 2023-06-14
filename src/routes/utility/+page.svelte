@@ -6,6 +6,12 @@
 
   $: filters = [
         {
+            label: 'Search',
+            name: 'search',
+            type: 'textbox',
+            value: ''
+        },
+        {
             label: 'Sort by',
             name: 'sort',
             type: 'select',
@@ -44,7 +50,22 @@
 
         const filtering: any = {};
         filters.forEach((filter) => {
-            filtering[filter.name] = filter.selected;
+            if (filter.type === 'select') {
+                filtering[filter.name] = filter.selected;
+            }
+
+            if (filter.type === 'textbox') {
+                filtering[filter.name] = filter.value;
+            }
+
+            if (filter.name === 'search') {
+                $page.url.searchParams.set('search', filter.value ?? '');
+                if (filter.value) {
+                    goto(`?${$page.url.searchParams.toString()}`);
+                } else {
+                    goto('?');
+                }
+            }
         });
 
         const response = await fetch('/api/utility/list', {

@@ -10,7 +10,7 @@
   $: userComment = '';
   $: comments = null;
 
-  async function submitComment() {
+    async function submitComment() {
         commentError = null;
 
         const response = await fetch('/api/fish/comment/create', {

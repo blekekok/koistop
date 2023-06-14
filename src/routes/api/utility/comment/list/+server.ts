@@ -17,7 +17,7 @@ export const POST = (async ({ request, locals: { supabase } }) => {
         id,
         content,
         utility,
-        author ( id, username ),
+        author ( id, username, image ),
         createdAt
       `)
       .eq('utility`', id)
