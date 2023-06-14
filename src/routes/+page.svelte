@@ -74,10 +74,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="pt-5">
-            <Button href="/fish">Shop Now</Button>
-        </div>
     </div>
 </div>
 
