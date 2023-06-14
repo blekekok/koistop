@@ -1,13 +1,16 @@
 <script>
-import { Button } from 'flowbite-svelte';
-import Logocart from '~icons/material-symbols/add-shopping-cart'
+    import { Button } from 'flowbite-svelte';
+    import Logocart from '~icons/material-symbols/add-shopping-cart'
 
-let showModal = false;
+    let showModal = false;
 
-function toggleModal(){
-  showModal = !showModal;
-}
+    $: newFish = {
+        
+    };
 
+    function toggleModal(){
+        showModal = !showModal;
+    }
 </script>
 
 

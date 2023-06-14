@@ -46,7 +46,7 @@
             <div class="w-[40%]">
                 <img src="{defaultFish}" class="w-full h-full" alt="">
             </div>
-            <h1 class="text-3xl pt-10 pb-5">ASK SELLER:</h1>
+            <h1 class="text-3xl pt-10 pb-5">DISCUSSION:</h1>
             {#if commentError}
                 <div class="flex h-12 w-full justify-start items-center px-4 my-4 bg-red-500/70 rounded-xl">
                     <span class="text-white font-semibold">{commentError}</span>
