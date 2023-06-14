@@ -29,7 +29,8 @@
         // },
         {
             title: 'SELL',
-            href: '/sell'
+            href: '/sell',
+            authenticated: true
         }
     ];
 </script>
@@ -50,9 +51,11 @@
 
     <ul class="h-full flex items-center gap-10 font-bold font-sans text-lg px-8">
       {#each menus as menu}
-        <li class="hover:text-gray-500">
-            <a class="p-2" href={menu.href}>{menu.title}</a>
-        </li>
+        {#if !menu.authenticated || user}
+          <li class="hover:text-gray-500">
+              <a class="p-2" href={menu.href}>{menu.title}</a>
+          </li>
+        {/if}
       {/each}
       {#if user}
         <li class="h-full hover:text-gray-500">
