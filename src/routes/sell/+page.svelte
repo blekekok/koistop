@@ -70,6 +70,12 @@ function toggleModal(){
                             <form>
                                 <div class="my-2 text-lg leading-relaxed">
                                     <label class="block text-sm font-bold mb-2" for="fishname">
+                                        Fish Image URL
+                                    </label>
+                                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishname" type="text" placeholder="Fish Name">
+                                </div>
+                                <div class="my-2 text-lg leading-relaxed">
+                                    <label class="block text-sm font-bold mb-2" for="fishname">
                                         Fish Name
                                     </label>
                                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishname" type="text" placeholder="Fish Name">
