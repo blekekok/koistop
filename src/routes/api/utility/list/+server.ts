@@ -1,9 +1,10 @@
 import { json } from '@sveltejs/kit';
 
-export const GET = (async ({ locals: { supabase } }) => {
+export const POST = (async ({ request, locals: { supabase } }) => {
+  const body = await request.json();
 
   try {
-    const { data: fishData, error: utilityErr } = await supabase
+    let req = supabase
       .from('Utility')
       .select(`
         id,
@@ -14,11 +15,24 @@ export const GET = (async ({ locals: { supabase } }) => {
         image
       `);
 
+    if (body?.sort) {
+      const sort = body.sort;
+      if (['a-z', 'z-a'].includes(sort)) {
+        req = req.order('name', { ascending: sort === 'z-a' })
+      } else if (['cheapest', 'expensive'].includes(sort)) {
+        req = req.order('price', { ascending: sort === 'cheapest' });
+      } else if (['recent', 'oldest'].includes(sort)) {
+        req = req.order('createdAt', { ascending: sort === 'oldest' })
+      }
+    }
+
+    const { data: utilityData, error: utilityErr } = await req;
+
     if (utilityErr) throw utilityErr;
 
     return json({
       message: 'Retrieved all utility data',
-      data: fishData
+      data: utilityData
     })
   } catch (err) {
     console.log(err);

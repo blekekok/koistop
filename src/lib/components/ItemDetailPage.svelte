@@ -70,17 +70,21 @@
             {/if}
             <div class="flex flex-col">
                 {#if comments}
-                    {#each comments as comment}
-                        <div class="flex flex-row items-center pb-6">
-                            <div class="w-12 h-12 mr-4">
-                                <img class="rounded-full object-cover w-full h-full" src="{user.image ?? defaultUser}" alt="">
+                    {#if !comments.length}
+                        <span class="text-lg font-semibold text-white">No comments</span>
+                    {:else}
+                        {#each comments as comment}
+                            <div class="flex flex-row items-center pb-6">
+                                <div class="w-12 h-12 mr-4">
+                                    <img class="rounded-full object-cover w-full h-full" src="{user.image ?? defaultUser}" alt="">
+                                </div>
+                                <div>
+                                    <h2 class="font-bold">{comment.author.username} {comment.author.username === item.seller.username ? ' - Seller' : ''}</h2>
+                                    <h1>{comment.content}</h1>
+                                </div>
                             </div>
-                            <div>
-                                <h2 class="font-bold">{comment.author.username} {comment.author.username === item.seller.username ? ' - Seller' : ''}</h2>
-                                <h1>{comment.content}</h1>
-                            </div>
-                        </div>
-                    {/each}
+                        {/each}
+                    {/if}
                 {:else}
                     <span class="font-semibold text-white">Loading comments...</span>
                 {/if}

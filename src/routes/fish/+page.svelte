@@ -93,4 +93,4 @@
     });
 </script>
 
-<ItemPage {items} {filters} onChange={() => getItems()} type="fish" />
+<ItemPage {items} {filters} onChange={getItems} type="fish" />

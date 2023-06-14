@@ -4,7 +4,6 @@ export const POST = (async ({ request, locals: { supabase } }) => {
   const body = await request.json();
 
   try {
-
     let req = supabase
       .from('Fish')
       .select(`
