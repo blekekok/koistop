@@ -130,7 +130,8 @@
             <div class="min-h-full w-1 bg-white"></div>
 
             <div class="w-[50%] flex flex-col text-3xl px-10">
-                <Button class="mb-5" href="/productlist">PRODUCT LIST</Button>
+                <Button class="mb-5" href="/fishproductlist">FISH PRODUCT LIST</Button>
+                <Button class="mb-5" href="/utilityproductlist">UTILITY PRODUCT LIST</Button>
                 <Button class="mb-5">PRODUCT QUESTION</Button>
                 <Button class="mb-5">PRODUCT ----</Button>
             </div>

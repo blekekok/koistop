@@ -26,7 +26,7 @@
                     <h1>Seller</h1>
                     <h1>Desc</h1>
                 </div>
-                <Button class="self-end">Delete Product</Button>
+                <Button class="self-end">Remove Product</Button>
             </div>
         </div>
         <div class="flex flex-row w-[100%] p-2 gap-2">
@@ -35,12 +35,12 @@
             </div>
             <div class="justify-between flex flex-col w-full">
                 <div>
-                    <h1>Fish Name</h1>
-                    <h1>Price</h1>
+                    <h1 class="font-bold text-2xl">Fish Name</h1>
+                    <h1 class="font-semibold">Price</h1>
                     <h1>Seller</h1>
                     <h1>Desc</h1>
                 </div>
-                <Button class="self-end">Delete Product</Button>
+                <Button class="self-end">Remove Product</Button>
             </div>
         </div>
     </div>
