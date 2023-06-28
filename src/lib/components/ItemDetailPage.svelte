@@ -43,9 +43,41 @@
                 </div>
             </div>
             <h1 class="text-3xl pt-10 pb-5">RECOMMENDED ITEM:</h1>
-            <div class="w-[40%]">
-                <img src="{defaultFish}" class="w-full h-full" alt="">
-            </div>
+            <div class="gap-10 flex-row flex place-content-between">
+                <div class="w-[30%] h-full">
+                    <img src="{defaultFish}" class="w-full h-full" alt="">
+                    <h1>Fish Name: adsa</h1>
+                    <h1>Fish Price: 11212312</h1>
+                    <h1>Seller: dasdas</h1>
+                    <div class="flex justify-end">
+                        <Button class="block">
+                            Add to cart
+                        </Button>
+                    </div>
+                </div>
+                <div class="w-[30%] h-full">
+                    <img src="{defaultFish}" class="w-full h-full" alt="">
+                    <h1>Fish Name: adsa</h1>
+                    <h1>Fish Price: 11212312</h1>
+                    <h1>Seller: dasdas</h1>
+                    <div class="flex justify-end">
+                        <Button class="block">
+                            Add to cart
+                        </Button>
+                    </div>
+                </div>
+                <div class="w-[30%] h-full">
+                    <img src="{defaultFish}" class="w-full h-full" alt="">
+                    <h1>Fish Name: adsa</h1>
+                    <h1>Fish Price: 11212312</h1>
+                    <h1>Seller: dasdas</h1>
+                    <div class="flex justify-end">
+                        <Button class="block">
+                            Add to cart
+                        </Button>
+                    </div>
+                </div>
+            </div>    
             <h1 class="text-3xl pt-10 pb-5">DISCUSSION:</h1>
             {#if commentError}
                 <div class="flex h-12 w-full justify-start items-center px-4 my-4 bg-red-500/70 rounded-xl">

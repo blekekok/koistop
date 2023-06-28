@@ -1,11 +1,19 @@
-<script>
-    import { Button } from 'flowbite-svelte';
+<script lang="ts">
+    import { Button, Select } from 'flowbite-svelte';
     import Logocart from '~icons/material-symbols/add-shopping-cart'
 
     let showModal = false;
 
+    export let data;
+    let types = data.type.map((type) => {
+        return {
+            name: type.name,
+            value: type.id
+        }
+    });
+
     $: newFish = {
-        
+        type: ''
     };
 
     function toggleModal(){
@@ -93,11 +101,7 @@
                                     <label class="block text-sm font-bold mb-2" for="fishtype">
                                         Fish Type
                                     </label>
-                                    <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishtype">
-                                        <option value="">Select a type...</option>
-                                        <option value="saltwater">Akrapovic</option>
-                                        <option value="freshwater">Showa</option>
-                                    </select>
+                                    <Select bind:value={newFish.type} items={types} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishtype" />
                                 </div>
                                 <div class="mb-4">
                                     <label class="block text-sm font-bold mb-2" for="fishdescription">

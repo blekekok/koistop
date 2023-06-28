@@ -21,5 +21,8 @@ export const load = async ({ fetch, parent }) => {
     data.type = content.data;
   } catch (err) {
     console.log(err);
+    throw redirect(301, '/');
   }
+
+  return data;
 };
