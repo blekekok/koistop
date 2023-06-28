@@ -1,6 +1,6 @@
 <script lang="ts">
   import ItemDetail from '$lib/components/ItemDetailPage.svelte';
-  import { Modal } from 'flowbite-svelte';
+  import { Button, Modal } from 'flowbite-svelte';
 	import { onMount } from 'svelte';
 
   export let data;
@@ -50,10 +50,9 @@
       })
     });
 
-    const content = await response.json();
-
     if (response.status !== 200) {
       openModal('Error', 'Error adding item to cart');
+      return;
     }
 
     openModal('Success', 'Item added to cart');
@@ -71,6 +70,7 @@
 
       if (response.status !== 200) {
           commentError = content.message;
+          return;
       }
 
       comments = content.data;
@@ -87,4 +87,7 @@
   <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
     {modalMessage}
   </p>
+  <svelte:fragment slot='footer'>
+    <Button>Close</Button>
+  </svelte:fragment>
 </Modal>

@@ -20,26 +20,22 @@ export const POST = async ({ request, locals: { supabase, getProfile } }) => {
       });
     }
 
-    const content = {
-      user: profile.id,
-      fish: null,
-      utility: null
-    };
+    const req = supabase
+      .from('Cart')
+      .delete();
 
     if (fish) {
-      content.fish = fish;
+      req.eq('fish', fish);
     } else if (utility) {
-      content.utility = utility;
+      req.eq('utility', utility);
     }
 
-    const { error } = await supabase
-      .from('Cart')
-      .upsert(content);
+    const { error } = await req;
 
     if (error) throw error;
 
     return json({
-      message: 'Cart item added'
+      message: 'Cart item removed'
     });
   } catch (err) {
     console.log(err);
