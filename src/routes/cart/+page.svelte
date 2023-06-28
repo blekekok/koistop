@@ -25,10 +25,9 @@
             </div>
             <div class="justify-between flex flex-col w-full">
                 <div>
-                    <h1 class="font-bold text-2xl">Fish Name</h1>
-                    <h1 class="font-semibold">Price</h1>
-                    <h1>Seller</h1>
-                    <h1>Desc</h1>
+                    <h1 class="font-bold text-3xl">Fish Name</h1>
+                    <h1 class="text-2xl">Price</h1>
+                    <h1 class="text-1xl">Seller</h1>
                 </div>
                 <Button class="self-end">Remove From Cart</Button>
             </div>
@@ -42,10 +41,9 @@
             </div>
             <div class="justify-between flex flex-col w-full">
                 <div>
-                    <h1 class="font-bold text-2xl">Fish Name</h1>
-                    <h1 class="font-semibold">Price</h1>
-                    <h1>Seller</h1>
-                    <h1>Desc</h1>
+                    <h1 class="font-bold text-3xl">Fish Name</h1>
+                    <h1 class="text-2xl">Price</h1>
+                    <h1 class="text-1xl">Seller</h1>
                 </div>
                 <Button class="self-end">Remove From Cart</Button>
             </div>
