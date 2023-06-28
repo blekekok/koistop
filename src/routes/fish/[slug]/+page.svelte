@@ -1,5 +1,6 @@
 <script lang="ts">
   import ItemDetail from '$lib/components/ItemDetailPage.svelte';
+  import { Modal } from 'flowbite-svelte';
 	import { onMount } from 'svelte';
 
   export let data;
@@ -10,48 +11,80 @@
   $: userComment = '';
   $: comments = null;
 
-    async function submitComment() {
-        commentError = null;
+  $: showModal = false;
+  $: modalTitle = 'Error';
+  $: modalMessage = '';
+  function openModal(title: string, message: string) {
+    modalTitle = title;
+    modalMessage = message;
+    showModal = true;
+  }
 
-        const response = await fetch('/api/fish/comment/create', {
-            method: 'POST',
-            body: JSON.stringify({
-                id: item.id,
-                comment: userComment
-            })
-        });
+  async function submitComment() {
+      commentError = null;
 
-        const content = await response.json();
+      const response = await fetch('/api/fish/comment/create', {
+          method: 'POST',
+          body: JSON.stringify({
+              id: item.id,
+              comment: userComment
+          })
+      });
 
-        if (response.status !== 200) {
-            commentError = content.message;
-        }
+      const content = await response.json();
 
-        await loadComments();
+      if (response.status !== 200) {
+        commentError = content.message;
+      }
 
-        userComment = '';
+      await loadComments();
+
+      userComment = '';
+  }
+
+  async function addToCart() {
+    const response = await fetch('/api/cart/add', {
+      method: 'POST',
+      body: JSON.stringify({
+        fish_id: item.id
+      })
+    });
+
+    const content = await response.json();
+
+    if (response.status !== 200) {
+      openModal('Error', 'Error adding item to cart');
     }
 
-    async function loadComments() {
-        const response = await fetch('/api/fish/comment/list', {
-            method: 'POST',
-            body: JSON.stringify({
-                id: item.id
-            })
-        });
+    openModal('Success', 'Item added to cart');
+  }
 
-        const content = await response.json();
+  async function loadComments() {
+      const response = await fetch('/api/fish/comment/list', {
+          method: 'POST',
+          body: JSON.stringify({
+              id: item.id
+          })
+      });
 
-        if (response.status !== 200) {
-            commentError = content.message;
-        }
+      const content = await response.json();
 
-        comments = content.data;
-    }
+      if (response.status !== 200) {
+          commentError = content.message;
+      }
+
+      comments = content.data;
+  }
 
   onMount(async () => {
     await loadComments();
   });
 </script>
 
-<ItemDetail {user} {item} bind:userComment={userComment} {comments} {submitComment} {commentError}/>
+<ItemDetail {user} {item} bind:userComment={userComment} {comments} {submitComment} {commentError} {addToCart}/>
+
+<Modal title={modalTitle} bind:open={showModal} autoclose outsideclose>
+  <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+    {modalMessage}
+  </p>
+</Modal>

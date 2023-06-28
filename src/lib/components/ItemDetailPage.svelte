@@ -15,6 +15,7 @@
     export let comments: any = null;
     export let submitComment: any;
     export let commentError: any;
+    export let addToCart: any;
 
     function ClearC(){
         userComment = '';
@@ -36,7 +37,7 @@
                         <p>{item.description}</p>
                     </div>
                     <div class="flex justify-end">
-                        <Button class="block">
+                        <Button on:click={addToCart} class="block">
                             Add to cart
                         </Button>
                     </div>
