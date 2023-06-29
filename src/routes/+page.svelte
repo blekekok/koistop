@@ -3,8 +3,7 @@
     import img2 from '$lib/images/ikan2.jpg';
     import img3 from '$lib/images/ikan3.jpg';
     import { Button } from 'flowbite-svelte';
-    import { bounceInOut } from 'svelte/easing';
-    import { Carousel, CarouselTransition } from 'flowbite-svelte'
+    import { CarouselTransition } from 'flowbite-svelte'
 
 
     export const images = [

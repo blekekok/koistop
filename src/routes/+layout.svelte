@@ -30,7 +30,7 @@
 	<title>Koistop</title>
 </svelte:head>
 
-<main class="flex flex-col w-full min-h-full bg-black text-black box-border" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{backgroundImage}');background-attachment:fixed">
+<main class="flex flex-col w-full min-h-full bg-black text-black box-border" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{backgroundImage}'); background-size: cover; background-repeat: no-repeat;">
     <Header user={profile} />
 
     <slot />
