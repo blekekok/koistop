@@ -13,8 +13,8 @@ export const GET = async ({ request, locals: { supabase, getProfile } }) => {
     const { data, error } = await supabase
       .from('Cart')
       .select(`
-        fish ( id, name, price, image, seller ( username ) ),
-        utility ( id, name, price, image, seller ( username ) )
+        fish ( id, name, price, image, seller ( username ), sold ),
+        utility ( id, name, price, image, seller ( username ), sold )
       `).eq('user', profile.id);
 
     if (error) throw error;

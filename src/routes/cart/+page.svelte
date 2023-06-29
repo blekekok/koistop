@@ -41,6 +41,22 @@
         await loadItems();
     }
 
+    async function proceedCheckout() {
+        if (!items || items.length <= 0) {
+            openModal('Error', 'There is nothing in the cart');
+            return;
+        }
+
+        const response = await fetch('/api/cart/checkout', {
+            method: 'POST'
+        });
+
+        const content = await response.json();
+        openModal('Error', content.message);
+
+        await loadItems();
+    }
+
     async function loadItems() {
         const response = await fetch('/api/cart/list');
 
@@ -77,7 +93,7 @@
                     </div>
                     <div class="justify-between flex flex-col w-full">
                         <div>
-                            <h1 class="font-bold text-3xl">{item.name}</h1>
+                            <h1 class="font-bold text-3xl">{item.name} {item.sold ? '( SOLD )' : ''}</h1>
                             <h1 class="text-2xl">Rp. {numberFormat.format(item.price)}</h1>
                             <h1 class="text-1xl">{item.seller.username}</h1>
                         </div>
@@ -95,7 +111,7 @@
             <div class="flex flex-row items-center">
                 <div>Total Price: Rp. {numberFormat.format(totalPrice)}</div>
             </div>
-            <Button class="w-auto">Checkout</Button>
+            <Button on:click={proceedCheckout} class="w-auto">Checkout</Button>
         </div>
     </footer>
 </div>

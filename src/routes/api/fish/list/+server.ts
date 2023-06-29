@@ -14,8 +14,10 @@ export const POST = (async ({ request, locals: { supabase } }) => {
         dimension,
         fishType ( id, name ),
         seller ( id, username ),
-        image
-      `);
+        image,
+        sold
+      `)
+      .eq('sold', false);
 
     if (body?.fish_type) {
       const type = body.fish_type;

@@ -1,6 +1,7 @@
 <script lang="ts">
   import ItemDetail from '$lib/components/ItemDetailPage.svelte';
-	import { onMount } from 'svelte';
+  import { onMount } from 'svelte';
+  import { Button, Modal } from 'flowbite-svelte';
 
   export let data;
   $: item = data.content as any;
@@ -9,6 +10,15 @@
   $: commentError = null;
   $: userComment = '';
   $: comments = null;
+
+  $: showModal = false;
+  $: modalTitle = 'Error';
+  $: modalMessage = '';
+  function openModal(title: string, message: string) {
+    modalTitle = title;
+    modalMessage = message;
+    showModal = true;
+  }
 
   async function submitComment() {
         commentError = null;
@@ -30,6 +40,22 @@
         await loadComments();
 
         userComment = '';
+    }
+
+    async function addToCart() {
+      const response = await fetch('/api/cart/add', {
+        method: 'POST',
+        body: JSON.stringify({
+          utility_id: item.id
+        })
+      });
+
+      if (response.status !== 200) {
+        openModal('Error', 'Error adding item to cart');
+        return;
+      }
+
+      openModal('Success', 'Item added to cart');
     }
 
     async function loadComments() {
@@ -54,4 +80,13 @@
   });
 </script>
 
-<ItemDetail {user} {item} bind:userComment={userComment} {comments} {submitComment} {commentError}/>
+<ItemDetail {user} {item} bind:userComment={userComment} {comments} {submitComment} {commentError} {addToCart}/>
+
+<Modal title={modalTitle} bind:open={showModal} autoclose outsideclose>
+    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+      {modalMessage}
+    </p>
+    <svelte:fragment slot='footer'>
+      <Button>Close</Button>
+    </svelte:fragment>
+  </Modal>

@@ -12,8 +12,10 @@ export const POST = (async ({ request, locals: { supabase } }) => {
         price,
         description,
         seller ( id, username ),
-        image
-      `);
+        image,
+        sold
+      `)
+      .eq('sold', false);
 
     if (body?.sort) {
       const sort = body.sort;
