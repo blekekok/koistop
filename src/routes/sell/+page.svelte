@@ -114,6 +114,10 @@
     $: items = null;
 
     const tabs: any = {
+        'all-product': {
+            title: 'All Products',
+            status: -1
+        },
         'new-order': {
             title: 'New Order',
             status: 0
@@ -131,6 +135,23 @@
             status: 4
         }
     };
+
+    async function removeProduct(item: any) {
+        const response = await fetch('/api/product/remove', {
+            method: 'POST',
+            body: JSON.stringify({
+                id: item.id,
+                type: item.type
+            })
+        });
+
+        if (response.status !== 200) {
+            openModal('Error', 'Failed to load products');
+            return;
+        }
+
+        await loadItems(-1);
+    }
 
     async function setStatus(item: any, status: number) {
         const content: any = {
@@ -160,12 +181,19 @@
     async function loadItems(status: number) {
         items = null;
 
-        const response = await fetch('/api/order/list/seller', {
-            method: 'POST',
-            body: JSON.stringify({
-                status
-            })
-        });
+        let response = null;
+
+        if (status === -1) {
+            response = await fetch('/api/product/list');
+        } else {
+            response = await fetch('/api/order/list/seller', {
+                method: 'POST',
+                body: JSON.stringify({
+                    status
+                })
+            });
+        }
+
 
         if (response.status !== 200) {
             openModal('Error', `Can't retrieve order data`);
@@ -184,6 +212,10 @@
 <div class="flex min-h-full bg-no-repeat text-white">
     <div class="w-[20%] h-full flex justify-center p-4">
         <div class="flex flex-col gap-4 w-full">
+            <a href="#all-product" on:click={() => setActiveTab('all-product')} class="w-auto items-center flex bg-[#eb4f27] rounded-xl p-2.5 hover:bg-orange-600">
+                <Logocart class="text-2xl"></Logocart>
+                <h1 class="text-lg">All product</h1>
+            </a>
             <a href="#new-order" on:click={() => setActiveTab('new-order')} class="w-auto items-center flex bg-[#eb4f27] rounded-xl p-2.5 hover:bg-orange-600">
                 <Logocart class="text-2xl"></Logocart>
                 <h1 class="text-lg">New Order</h1>
@@ -354,6 +386,10 @@
                             {#if activeTab === 'ready'}
                                 <Button on:click={() => setStatus(item, 3)} class="self-end">Deliver</Button>
                                 <Button on:click={() => setStatus(item, 1)} class="self-end">Cancel</Button>
+                            {/if}
+
+                            {#if activeTab === 'all-product' && item.sold === false}
+                                <Button on:click={() => removeProduct(item)} class="self-end">Remove</Button>
                             {/if}
                         </div>
                     </div>

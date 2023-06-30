@@ -15,31 +15,41 @@ export const POST = async ({ request, locals: { supabase, getProfile } }) => {
 
     const data: any = [];
 
-    const { data: fishData, error: fishError } = await supabase
+    let reqFish = supabase
       .from('OrderItem')
       .select(`
         item:fish!inner (*),
         status
       `)
-      .eq('status', status ?? 0)
       .eq('item.seller', profile.id);
+
+    if (status && status != -1) {
+      reqFish = reqFish.eq('status', status ?? 0)
+    }
+
+    const { data: fishData, error: fishError } = await reqFish;
 
     if (fishError) throw fishError;
 
-    data.push(...fishData.map(d => { return { ...d, type: 'fish' } }));
+    data.push(...fishData.map((d: any) => { return { ...d, type: 'fish' } }));
 
-    const { data: utilityData, error: utilityError } = await supabase
+    let reqUtility = supabase
       .from('OrderItem')
       .select(`
         item:utility!inner (*),
         status
       `)
-      .eq('status', status ?? 0)
       .eq('item.seller', profile.id);
+
+    if (status && status != -1) {
+      reqUtility = reqUtility.eq('status', status ?? 0)
+    }
+
+    const { data: utilityData, error: utilityError } = await reqUtility;
 
     if (utilityError) throw utilityError;
 
-    data.push(...utilityData.map(d => { return { ...d, type: 'utility' } }));
+    data.push(...utilityData.map((d: any) => { return { ...d, type: 'utility' } }));
 
     const mapped = data.map((d: any) => {
       return {
