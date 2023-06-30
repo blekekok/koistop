@@ -16,26 +16,93 @@
     }
 
     export let data;
-    let types = data.type.map((type) => {
+    let types = data.type.map((type: any) => {
         return {
             name: type.name,
             value: type.id
         }
     });
 
-    $: newFish = {
-        type: ''
-    };
-
     $: showModalFish = false;
-    $: showModalUtility = false;
-
     function toggleModalFish(){
         showModalFish = !showModalFish;
     }
 
+    $: newFish = {
+        name: '',
+        price: 0,
+        type: '',
+        dimension: 0,
+        desc: '',
+        image: ''
+    };
+
+    function clearFish() {
+        newFish = {
+            name: '',
+            price: 0,
+            type: '',
+            dimension: 0,
+            desc: '',
+            image: ''
+        };
+    }
+
+    async function addFish() {
+        const response = await fetch('/api/fish/add', {
+            method: 'POST',
+            body: JSON.stringify(newFish)
+        });
+
+        const content = await response.json();
+
+        if (response.status !== 200) {
+            openModal('Error', content.message);
+            return;
+        }
+
+        clearFish();
+        openModal('Success', 'Successfully created a new fish');
+        showModalFish = false;
+    }
+
+    $: showModalUtility = false;
     function toggleModalUtility(){
         showModalUtility = !showModalUtility;
+    }
+
+    $: newUtility = {
+        name: '',
+        price: 0,
+        desc: '',
+        image: ''
+    };
+
+    function clearUtility() {
+        newUtility = {
+            name: '',
+            price: 0,
+            desc: '',
+            image: ''
+        };
+    }
+
+    async function addUtility() {
+        const response = await fetch('/api/utility/add', {
+            method: 'POST',
+            body: JSON.stringify(newUtility)
+        });
+
+        const content = await response.json();
+
+        if (response.status !== 200) {
+            openModal('Error', content.message);
+            return;
+        }
+
+        clearUtility();
+        openModal('Success', 'Successfully created a new utility');
+        showModalUtility = false;
     }
 
     let activeTab = 'new-order';
@@ -158,21 +225,21 @@
                             <form>
                                 <div class="my-2 text-lg leading-relaxed">
                                     <label class="block text-sm font-bold mb-2" for="fishname">
-                                        Fish Image URL
-                                    </label>
-                                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishname" type="text" placeholder="Fish Name">
-                                </div>
-                                <div class="my-2 text-lg leading-relaxed">
-                                    <label class="block text-sm font-bold mb-2" for="fishname">
                                         Fish Name
                                     </label>
-                                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishname" type="text" placeholder="Fish Name">
+                                    <input bind:value={newFish.name} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishname" type="text" placeholder="Fish Name">
                                 </div>
                                 <div class="mb-4">
                                     <label class="block  text-sm font-bold mb-2" for="fishprice">
                                         Fish Price
                                     </label>
-                                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishprice" type="number" placeholder="Fish Price">
+                                    <input bind:value={newFish.price} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishprice" type="number" placeholder="Fish Price">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-sm font-bold mb-2" for="fishtype">
+                                        Dimension
+                                    </label>
+                                    <input bind:value={newFish.dimension} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishdimension" type="number" placeholder="Fish Dimension">
                                 </div>
                                 <div class="mb-4">
                                     <label class="block text-sm font-bold mb-2" for="fishtype">
@@ -184,7 +251,13 @@
                                     <label class="block text-sm font-bold mb-2" for="fishdescription">
                                         Fish Description
                                     </label>
-                                    <textarea class="shadow resize-none text-black appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="fishdescription" rows="3" placeholder="Fish Description"></textarea>
+                                    <textarea bind:value={newFish.desc} class="shadow resize-none text-black appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="fishdescription" rows="3" placeholder="Fish Description"></textarea>
+                                </div>
+                                <div class="my-2 text-lg leading-relaxed">
+                                    <label class="block text-sm font-bold mb-2" for="fishname">
+                                        Fish Image URL
+                                    </label>
+                                    <input bind:value={newFish.image} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishname" type="text" placeholder="Fish Image">
                                 </div>
                             </form>
                         </div>
@@ -192,8 +265,8 @@
                             <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" on:click={toggleModalFish}>
                             Close
                             </button>
-                            <button class="bg-orange-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" on:click={toggleModalFish}>
-                            Save Changes
+                            <button class="bg-orange-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" on:click={addFish}>
+                            Create
                             </button>
                         </div>
                         </div>
@@ -221,27 +294,27 @@
                             <form>
                                 <div class="my-2 text-lg leading-relaxed">
                                     <label class="block text-sm font-bold mb-2" for="fishname">
-                                        Utility Image URL
-                                    </label>
-                                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishname" type="text" placeholder="Fish Name">
-                                </div>
-                                <div class="my-2 text-lg leading-relaxed">
-                                    <label class="block text-sm font-bold mb-2" for="fishname">
                                         Utility Name
                                     </label>
-                                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishname" type="text" placeholder="Fish Name">
+                                    <input bind:value={newUtility.name} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishname" type="text" placeholder="Utility Name">
                                 </div>
                                 <div class="mb-4">
                                     <label class="block  text-sm font-bold mb-2" for="fishprice">
                                         Utility Price
                                     </label>
-                                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishprice" type="number" placeholder="Fish Price">
+                                    <input bind:value={newUtility.price} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishprice" type="number" placeholder="Utility Price">
                                 </div>
                                 <div class="mb-4">
                                     <label class="block text-sm font-bold mb-2" for="fishdescription">
                                         Utility Description
                                     </label>
-                                    <textarea class="shadow resize-none text-black appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="fishdescription" rows="3" placeholder="Fish Description"></textarea>
+                                    <textarea bind:value={newUtility.desc} class="shadow resize-none text-black appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="fishdescription" rows="3" placeholder="Utility Description"></textarea>
+                                </div>
+                                <div class="my-2 text-lg leading-relaxed">
+                                    <label class="block text-sm font-bold mb-2" for="fishname">
+                                        Utility Image URL
+                                    </label>
+                                    <input bind:value={newUtility.image} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishname" type="text" placeholder="Utility image">
                                 </div>
                             </form>
                         </div>
@@ -249,8 +322,8 @@
                             <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" on:click={toggleModalUtility}>
                             Close
                             </button>
-                            <button class="bg-orange-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" on:click={toggleModalUtility}>
-                            Save Changes
+                            <button class="bg-orange-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" on:click={addUtility}>
+                            Create
                             </button>
                         </div>
                         </div>
