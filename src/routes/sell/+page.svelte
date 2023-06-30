@@ -93,7 +93,7 @@
     async function loadItems(status: number) {
         items = null;
 
-        const response = await fetch('/api/order/list', {
+        const response = await fetch('/api/order/list/seller', {
             method: 'POST',
             body: JSON.stringify({
                 status

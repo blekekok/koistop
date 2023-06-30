@@ -24,6 +24,11 @@
             href: '/utility'
         },
         {
+            title: 'ORDER',
+            href: '/order',
+            authenticated: true
+        },
+        {
             title: 'CART',
             href: '/cart'
         },
