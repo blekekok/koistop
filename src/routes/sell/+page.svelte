@@ -209,7 +209,7 @@
                         <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-gray-800 outline-none focus:outline-none">
                         <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                             <h3 class="text-3xl font-semibold">
-                            Add Your New Fish Here
+                            Add Utility Product Here
                             </h3>
                             <button class="p-1 ml-auto bg-transparent border-0 text-white float-right text-3xl leading-none font-semibold outline-none focus:outline-none" on:click={toggleModalUtility}>
                             <span class="bg-transparent text-white h-6 w-6 text-2xl block outline-none focus:outline-none">
@@ -221,31 +221,25 @@
                             <form>
                                 <div class="my-2 text-lg leading-relaxed">
                                     <label class="block text-sm font-bold mb-2" for="fishname">
-                                        Fish Image URL
+                                        Utility Image URL
                                     </label>
                                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishname" type="text" placeholder="Fish Name">
                                 </div>
                                 <div class="my-2 text-lg leading-relaxed">
                                     <label class="block text-sm font-bold mb-2" for="fishname">
-                                        Fish Name
+                                        Utility Name
                                     </label>
                                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishname" type="text" placeholder="Fish Name">
                                 </div>
                                 <div class="mb-4">
                                     <label class="block  text-sm font-bold mb-2" for="fishprice">
-                                        Fish Price
+                                        Utility Price
                                     </label>
                                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishprice" type="number" placeholder="Fish Price">
                                 </div>
                                 <div class="mb-4">
-                                    <label class="block text-sm font-bold mb-2" for="fishtype">
-                                        Fish Type
-                                    </label>
-                                    <Select bind:value={newFish.type} items={types} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fishtype" />
-                                </div>
-                                <div class="mb-4">
                                     <label class="block text-sm font-bold mb-2" for="fishdescription">
-                                        Fish Description
+                                        Utility Description
                                     </label>
                                     <textarea class="shadow resize-none text-black appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="fishdescription" rows="3" placeholder="Fish Description"></textarea>
                                 </div>

@@ -3,6 +3,7 @@
     import defaultFish from '$lib/images/ikan1.jpg';
     import { Button } from 'flowbite-svelte';
     import { fly } from 'svelte/transition';
+    import { Tooltip } from 'flowbite-svelte';
 
     export let item: any;
     export let user: any;
@@ -20,7 +21,54 @@
     function ClearC(){
         userComment = '';
     }
+
+    let hovered = false;
 </script>
+
+<style>
+.image-container {
+    position: relative;
+    width: 100%;
+}
+
+.product-image {
+    width: 100%;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.image-container:hover .overlay {
+    opacity: 1;
+}
+
+.text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0;
+    transition: .5s ease;
+}
+
+.image-container:hover .text {
+    opacity: 1;
+}
+</style>
 
 <div class="min-h-full bg-no-repeat text-white">
     <div class="flex items-center content-center p-10">
@@ -46,22 +94,43 @@
             <h1 class="text-3xl pt-10 pb-5">RECOMMENDED ITEM:</h1>
             <div class="gap-10 flex-row flex place-content-between">
                 <div class="w-[30%] h-full">
-                    <img src="{defaultFish}" class="w-full h-full" alt="">
-                    <h1>Fish Name: adsa</h1>
-                    <h1>Fish Price: 11212312</h1>
-                    <h1>Seller: dasdas</h1>
+                    <a href="">
+                        <div class="image-container">
+                            <img src="{defaultFish}" id="disable-arrow" class="product-image" alt="">
+                            <div class="overlay">
+                                <div class="text">Visit Product</div>
+                            </div>
+                        </div>
+                        <h1>Fish Name: adsa</h1>
+                        <h1>Fish Price: 11212312</h1>
+                        <h1>Seller: dasdas</h1>
+                    </a>
                 </div>
                 <div class="w-[30%] h-full">
-                    <img src="{defaultFish}" class="w-full h-full" alt="">
-                    <h1>Fish Name: adsa</h1>
-                    <h1>Fish Price: 11212312</h1>
-                    <h1>Seller: dasdas</h1>
+                    <a href="">
+                        <div class="image-container">
+                            <img src="{defaultFish}" id="disable-arrow" class="product-image" alt="">
+                            <div class="overlay">
+                                <div class="text">Visit Product</div>
+                            </div>
+                        </div>
+                        <h1>Fish Name: adsa</h1>
+                        <h1>Fish Price: 11212312</h1>
+                        <h1>Seller: dasdas</h1>
+                    </a>
                 </div>
                 <div class="w-[30%] h-full">
-                    <img src="{defaultFish}" class="w-full h-full" alt="">
-                    <h1>Fish Name: adsa</h1>
-                    <h1>Fish Price: 11212312</h1>
-                    <h1>Seller: dasdas</h1>
+                    <a href="">
+                        <div class="image-container">
+                            <img src="{defaultFish}" id="disable-arrow" class="product-image" alt="">
+                            <div class="overlay">
+                                <div class="text">Visit Product</div>
+                            </div>
+                        </div>
+                        <h1>Fish Name: adsa</h1>
+                        <h1>Fish Price: 11212312</h1>
+                        <h1>Seller: dasdas</h1>
+                    </a>
                 </div>
             </div>    
             <h1 class="text-3xl pt-10 pb-5">DISCUSSION:</h1>
