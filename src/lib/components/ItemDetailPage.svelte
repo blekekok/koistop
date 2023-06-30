@@ -50,33 +50,18 @@
                     <h1>Fish Name: adsa</h1>
                     <h1>Fish Price: 11212312</h1>
                     <h1>Seller: dasdas</h1>
-                    <div class="flex justify-end">
-                        <Button class="block">
-                            Add to cart
-                        </Button>
-                    </div>
                 </div>
                 <div class="w-[30%] h-full">
                     <img src="{defaultFish}" class="w-full h-full" alt="">
                     <h1>Fish Name: adsa</h1>
                     <h1>Fish Price: 11212312</h1>
                     <h1>Seller: dasdas</h1>
-                    <div class="flex justify-end">
-                        <Button class="block">
-                            Add to cart
-                        </Button>
-                    </div>
                 </div>
                 <div class="w-[30%] h-full">
                     <img src="{defaultFish}" class="w-full h-full" alt="">
                     <h1>Fish Name: adsa</h1>
                     <h1>Fish Price: 11212312</h1>
                     <h1>Seller: dasdas</h1>
-                    <div class="flex justify-end">
-                        <Button class="block">
-                            Add to cart
-                        </Button>
-                    </div>
                 </div>
             </div>    
             <h1 class="text-3xl pt-10 pb-5">DISCUSSION:</h1>
