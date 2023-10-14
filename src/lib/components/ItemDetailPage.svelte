@@ -85,7 +85,7 @@
                         <p>{item.description}</p>
                     </div>
                     <div class="flex justify-end">
-                        <Button disabled={user.id === item.seller.id} on:click={addToCart} class="block">
+                        <Button disabled={!user || user.id === item.seller.id} on:click={addToCart} class="block">
                             Add to cart
                         </Button>
                     </div>

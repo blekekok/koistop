@@ -38,7 +38,9 @@
                         <img class="object-cover w-full h-full" src="{item.image ?? fishImage}" alt="">
                     </div>
                     <div class="rounded-md px-1">
-                        <h2 class="font-light">{item.name}</h2>
+                        <h2 class="font-light whitespace-nowrap overflow-hidden text-ellipsis max-w-[100%]">{item.name}</h2>
+                    </div>  
+                    <div class="rounded-md px-1">
                         <h3 class="font-semibold">Rp. {numberFormat.format(item.price)}</h3>
                         <h4 class="font-light">{item.seller.username}</h4>
                     </div>

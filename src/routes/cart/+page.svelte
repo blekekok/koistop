@@ -63,7 +63,7 @@
         const content = await response.json();
 
         if (response.status !== 200) {
-            openModal('Error', 'Failed to get items');
+            openModal('Error', 'You are not logged in');
             return;
         }
 
